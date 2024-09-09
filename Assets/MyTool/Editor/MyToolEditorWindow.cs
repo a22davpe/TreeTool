@@ -13,14 +13,17 @@ namespace MyTool.Editor
         public static void Open(ToolAsset target)
         {
             MyToolEditorWindow[] windows = Resources.FindObjectsOfTypeAll<MyToolEditorWindow>();
-
-            foreach (MyToolEditorWindow window in windows)
+            foreach (var w in windows)
             {
-                if(window.currentTree == target){
-                    window.Focus();
+                if (w.m_currentTool == target) { 
+                    w.Focus();
                     return;
                 }
             }
+
+            MyToolEditorWindow window = CreateWindow<MyToolEditorWindow>(typeof(MyToolEditorWindow), typeof(SceneView));
+            window.titleContent = new GUIContent($"{target.name}");
+            window.Load(target);
         }
 
         [SerializeField]
@@ -33,6 +36,19 @@ namespace MyTool.Editor
         MyToolView m_currentView;
 
         public ToolAsset currentTree => m_currentTree;
+
+        public void Load(ToolAsset target)
+        {
+            m_currentTool = target;
+            DrawTool();
+        }
+
+        private void DrawTool()
+        {
+            m_serializedObject = new SerializedObject(m_currentTool);
+            m_currentView = new MyToolView(m_serializedObject, this);
+            rootVisualElement.Add(m_currentView);
+        }
 
     }
 }
