@@ -32,5 +32,15 @@ namespace MyTool
         {
             m_position = position;
         }
+
+        //Returns the next node Id 
+        public virtual string OnProcess(ToolAsset currentTool)
+        {
+            ToolNode nextNode = currentTool.GetNodeFromOutput(m_guid, 0);
+
+            if (nextNode != null)
+                return nextNode.id;
+            return string.Empty;
+        }
     }
 }

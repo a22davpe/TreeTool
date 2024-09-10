@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,6 +22,8 @@ namespace MyTool.Editor
         public List<ToolEditorNode> m_toolNodes;
         public Dictionary<string, ToolEditorNode> m_nodeDictionary;
 
+        public Dictionary<Edge, ToolConnection> m_connectionDictionary;
+
         ToolWindowSearchProvider m_searchProvider;
 
         public MyToolView(SerializedObject serializedObject, MyToolEditorWindow window)
@@ -30,6 +33,7 @@ namespace MyTool.Editor
             m_window = window;
 
             m_nodeDictionary = new Dictionary<string, ToolEditorNode>();
+            m_connectionDictionary = new Dictionary<Edge, ToolConnection>();
             m_toolNodes = new List<ToolEditorNode>();
 
             m_searchProvider = ScriptableObject.CreateInstance<ToolWindowSearchProvider>();
@@ -50,6 +54,7 @@ namespace MyTool.Editor
             this.AddManipulator(new ClickSelector());
 
             DrawNodes();
+            DrawConnections();
 
             graphViewChanged += OnGraphViewChangedEvent;
         }
@@ -79,10 +84,82 @@ namespace MyTool.Editor
                         RemoveNode(nodes[i]);
                     }
                 }
+
+                foreach (Edge edge in graphViewChange.elementsToRemove.OfType<Edge>())
+                {
+                    RemoveConnection(edge);
+                }
             }
+
+            if(graphViewChange.edgesToCreate != null)
+            {
+                Undo.RecordObject(m_serializedObject.targetObject, "Added connections");
+                foreach (Edge edge in graphViewChange.edgesToCreate)
+                {
+                    CreateEdge(edge);
+                }
+            }
+
             return graphViewChange;
         }
 
+        private void CreateEdge(Edge edge)
+        {
+            ToolEditorNode inputNode = (ToolEditorNode)edge.input.node;
+            int inputIndex = inputNode.Ports.IndexOf(edge.input);
+
+            ToolEditorNode outputNode = (ToolEditorNode)edge.output.node;
+            int outputIndex = outputNode.Ports.IndexOf(edge.output);
+
+            ToolConnection connection = new ToolConnection(inputNode.Node.id, inputIndex, outputNode.Node.id, outputIndex);
+
+            m_tool.Connections.Add(connection);
+        }
+
+        private void DrawConnections() 
+        {
+            if (m_tool.Connections == null)
+                return;
+
+            foreach (ToolConnection connetion in m_tool.Connections)
+            {
+                DrawConnection(connetion);
+            }
+        }
+
+        private void DrawConnection(ToolConnection connetion)
+        {
+            ToolEditorNode inputNode = GetNode(connetion.inputPort.nodeId);
+            ToolEditorNode outputNode = GetNode(connetion.outputPort.nodeId);
+
+
+            if (inputNode == null)
+            {
+                Debug.LogError("inputNode is null in connection drawern!!");
+                return;
+            }
+            if (outputNode == null)
+            {
+                Debug.LogError("outputNode is null in connection drawern!!");
+                return;
+            }
+
+            Port inPort = inputNode.Ports[connetion.inputPort.portIndex];
+            Port outPort = outputNode.Ports[connetion.outputPort.portIndex];
+            Edge edge = inPort.ConnectTo(outPort);
+            AddElement(edge);
+
+            m_connectionDictionary.Add(edge, connetion);
+        }
+
+        private ToolEditorNode GetNode(string nodeId)
+        {
+            ToolEditorNode node = null;
+
+            m_nodeDictionary.TryGetValue(nodeId, out node);
+
+            return node;
+        }
 
         private void RemoveNode(ToolEditorNode editorNode)
         {
@@ -92,12 +169,23 @@ namespace MyTool.Editor
             m_serializedObject.Update();
         }
 
+        private void RemoveConnection(Edge edge)
+        {
+            if(m_connectionDictionary.TryGetValue(edge, out ToolConnection connection))
+            {
+                m_tool.Connections.Remove(connection);
+                m_connectionDictionary.Remove(edge);
+            }
+        }
+
         private void DrawNodes()
         {
             foreach (ToolNode node in m_tool.Nodes)
             {
                 AddNodeToTree(node);
+
             }
+            Bind();
         }
 
         private void ShowSearchWindow(NodeCreationContext context)
@@ -115,18 +203,52 @@ namespace MyTool.Editor
             m_serializedObject.Update();
 
             AddNodeToTree(node);
+            Bind();
         }
 
         private void AddNodeToTree(ToolNode node)
         {
             node.typeName = node.GetType().AssemblyQualifiedName;
 
-            ToolEditorNode editorNode = new ToolEditorNode(node);
+            ToolEditorNode editorNode = new ToolEditorNode(node, m_serializedObject);
             editorNode.SetPosition(node.position);
 
             m_toolNodes.Add(editorNode);
             m_nodeDictionary.Add(node.id, editorNode);
             AddElement(editorNode);
+        }
+
+        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+        {
+            List<Port> allPorts = new List<Port>();
+            List<Port> ports = new List<Port>();
+
+            foreach (var node in m_toolNodes)
+            {
+                allPorts.AddRange(node.Ports);
+            }
+
+            foreach (Port p in allPorts)
+            {
+                if (p == startPort) continue;
+                if (p.node == startPort.node) continue;
+                if (p.direction == startPort.direction) continue;
+
+                if (p.portType == startPort.portType)
+                    ports.Add(p);
+                
+            }
+
+            return ports;
+        }
+
+        private void Bind()
+        {
+            m_serializedObject.Update();
+
+            //inte samma bind, denna kommer ifrån visualelement
+            this.Bind(m_serializedObject);
+
         }
     }
 }

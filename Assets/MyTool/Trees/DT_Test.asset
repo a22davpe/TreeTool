@@ -13,69 +13,59 @@ MonoBehaviour:
   m_Name: DT_Test
   m_EditorClassIdentifier: 
   m_nodes:
-  - rid: 5538541568341835779
-  - rid: 5538541568341835780
-  - rid: 5538541568341835781
-  - rid: 5538541568341835786
   - rid: 5538541568341835787
+  - rid: 5040947691110793219
+  - rid: 5040947691110793220
+  m_connections:
+  - inputPort:
+      nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
+      portIndex: 1
+    outputPort:
+      nodeId: cdac190a-7750-41b3-af4c-3a51fa45612e
+      portIndex: 0
+  - inputPort:
+      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
+      portIndex: 1
+    outputPort:
+      nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
+      portIndex: 0
   references:
     version: 2
     RefIds:
-    - rid: 5538541568341835779
+    - rid: 5040947691110793219
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
+        m_position:
+          serializedVersion: 2
+          x: 476
+          y: 215
+          width: 136
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: 
+    - rid: 5040947691110793220
       type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
       data:
-        m_guid: 4d1a0959-e6cc-48be-b590-b8a2471a427c
+        m_guid: a4aa1e13-6ff4-4f30-980f-568cf88514d1
         m_position:
           serializedVersion: 2
-          x: 304
-          y: 139
-          width: 108
-          height: 53
+          x: 666
+          y: 215
+          width: 136
+          height: 146
         typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-    - rid: 5538541568341835780
-      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
-      data:
-        m_guid: 2cd3b30d-0ca0-475d-aafb-c09d7172081a
-        m_position:
-          serializedVersion: 2
-          x: 678
-          y: 237
-          width: 0
-          height: 0
-        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-    - rid: 5538541568341835781
-      type: {class: StartNode, ns: MyTool, asm: MyTool}
-      data:
-        m_guid: 84beace4-29ce-4673-b9c3-a5098d06c27c
-        m_position:
-          serializedVersion: 2
-          x: 594
-          y: 259
-          width: 0
-          height: 0
-        typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    - rid: 5538541568341835786
-      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
-      data:
-        m_guid: 7b99dd48-f234-40d1-9c91-4c303b6ae493
-        m_position:
-          serializedVersion: 2
-          x: 473
-          y: 139
-          width: 108
-          height: 53
-        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        logMessage: 
     - rid: 5538541568341835787
       type: {class: StartNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: cdac190a-7750-41b3-af4c-3a51fa45612e
         m_position:
           serializedVersion: 2
-          x: 375
+          x: 324
           y: 264
-          width: 74
-          height: 53
+          width: 76
+          height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

@@ -14,30 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nodes:
   - rid: 5538541568341835785
-  - rid: 5538541568341835789
+  - rid: 5040947689917251584
+  m_connections:
+  - inputPort:
+      nodeId: d60365c2-b172-4f22-83bf-ac0631d995f8
+      portIndex: 1
+    outputPort:
+      nodeId: 81763bb0-3058-4352-a0ed-ee3b4afd7bd8
+      portIndex: 0
   references:
     version: 2
     RefIds:
+    - rid: 5040947689917251584
+      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: d60365c2-b172-4f22-83bf-ac0631d995f8
+        m_position:
+          serializedVersion: 2
+          x: 408
+          y: 161
+          width: 136
+          height: 146
+        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        logMessage: Hello :)
     - rid: 5538541568341835785
       type: {class: StartNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: 81763bb0-3058-4352-a0ed-ee3b4afd7bd8
         m_position:
           serializedVersion: 2
-          x: 262
-          y: 90
-          width: 74
-          height: 53
+          x: 212
+          y: 230
+          width: 77
+          height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    - rid: 5538541568341835789
-      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
-      data:
-        m_guid: 71b94f21-059d-46a5-b1c0-002a2fb0e944
-        m_position:
-          serializedVersion: 2
-          x: 424
-          y: 90
-          width: 108
-          height: 53
-        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
