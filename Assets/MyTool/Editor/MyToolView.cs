@@ -70,8 +70,6 @@ namespace MyTool.Editor
 
             m_tool.Nodes.Add(node);
 
-            Debug.Log("s");
-
             m_serializedObject.Update();
 
             AddNodeToTree(node);
