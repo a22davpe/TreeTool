@@ -12,7 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fcd4df0555125409c739f70965bcec, type: 3}
   m_Name: DT_uwu
   m_EditorClassIdentifier: 
-  m_nodes: []
+  m_nodes:
+  - rid: 5538541568341835785
+  - rid: 5538541568341835789
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5538541568341835785
+      type: {class: StartNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 81763bb0-3058-4352-a0ed-ee3b4afd7bd8
+        m_position:
+          serializedVersion: 2
+          x: 262
+          y: 90
+          width: 74
+          height: 53
+        typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5538541568341835789
+      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 71b94f21-059d-46a5-b1c0-002a2fb0e944
+        m_position:
+          serializedVersion: 2
+          x: 424
+          y: 90
+          width: 108
+          height: 53
+        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null

@@ -1,7 +1,9 @@
 using Codice.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace MyTool.Editor
@@ -26,8 +28,7 @@ namespace MyTool.Editor
             window.Load(target);
         }
 
-        [SerializeField]
-        ToolAsset m_currentTree;
+        
 
         [SerializeField]
         SerializedObject m_serializedObject;
@@ -35,8 +36,27 @@ namespace MyTool.Editor
         [SerializeField]
         MyToolView m_currentView;
 
-        public ToolAsset currentTree => m_currentTree;
+        public ToolAsset currentTree => m_currentTool;
 
+
+        private void OnEnable()
+        {
+            if(m_currentTool != null)
+            {
+                DrawTool();
+            }
+        }
+
+        private void OnGUI()
+        {
+            if(m_currentTool != null)
+            {
+                if (EditorUtility.IsDirty(m_currentTool))
+                    this.hasUnsavedChanges = true;
+                else
+                    this.hasUnsavedChanges = false;
+            }
+        }
         public void Load(ToolAsset target)
         {
             m_currentTool = target;
@@ -47,8 +67,14 @@ namespace MyTool.Editor
         {
             m_serializedObject = new SerializedObject(m_currentTool);
             m_currentView = new MyToolView(m_serializedObject, this);
+            m_currentView.graphViewChanged += OnChange;
             rootVisualElement.Add(m_currentView);
         }
 
+        private GraphViewChange OnChange(GraphViewChange graphViewChange)
+        {
+            EditorUtility.SetDirty(m_currentTool);
+            return graphViewChange;
+        }
     }
 }

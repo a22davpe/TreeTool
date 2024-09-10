@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace MyTool.Editor
         private MyToolEditorWindow m_window;
 
         public MyToolEditorWindow window => m_window;
+
 
         public List<ToolEditorNode> m_toolNodes;
         public Dictionary<string, ToolEditorNode> m_nodeDictionary;
@@ -48,6 +50,46 @@ namespace MyTool.Editor
             this.AddManipulator(new ClickSelector());
 
             DrawNodes();
+
+            graphViewChanged += OnGraphViewChangedEvent;
+        }
+
+        private GraphViewChange OnGraphViewChangedEvent(GraphViewChange graphViewChange)
+        {
+            if(graphViewChange.movedElements != null)
+            {
+                Undo.RecordObject(m_serializedObject.targetObject, "Moved things ín graph");
+                foreach (ToolEditorNode editorNode in graphViewChange.movedElements.OfType<ToolEditorNode>())
+                {
+                    editorNode.SavePosition();
+                }
+            }
+
+
+            if (graphViewChange.elementsToRemove != null)
+            {
+                Undo.RecordObject(m_serializedObject.targetObject, "Remove things from graph");
+
+                List<ToolEditorNode> nodes = graphViewChange.elementsToRemove.OfType<ToolEditorNode>().ToList();
+
+                if (nodes.Count > 0)
+                {
+                    for (int i = nodes.Count - 1; i >= 0; i--)
+                    {
+                        RemoveNode(nodes[i]);
+                    }
+                }
+            }
+            return graphViewChange;
+        }
+
+
+        private void RemoveNode(ToolEditorNode editorNode)
+        {
+            m_tool.Nodes.Remove(editorNode.Node);
+            m_nodeDictionary.Remove(editorNode.Node.id);
+            m_toolNodes.Remove(editorNode);
+            m_serializedObject.Update();
         }
 
         private void DrawNodes()
