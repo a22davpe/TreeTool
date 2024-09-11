@@ -46,11 +46,15 @@ namespace MyTool.Editor
 
             this.name = typeInfo.Name;
 
-            if (info.hasFlowOutput)
+            for (int i = 0; i < info.hasFlowOutput; i++)
+            {
                 CreateFlowOutputPort();
+            }
 
-            if (info.hasFlowInput)
+            for (int i = 0; i < info.hasFlowInput; i++)
+            {
                 CreateFlowInputPort();
+            }
 
             foreach (FieldInfo property in typeInfo.GetFields())
             {
@@ -100,7 +104,7 @@ namespace MyTool.Editor
         private void CreateFlowInputPort()
         {
 
-            Port input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(PortTypes.FlowPort));
+            Port input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(PortTypes.FlowPort));
             input.portName = "Input";
             input.tooltip = "Flow input";
             m_ports.Add(input);
@@ -115,8 +119,6 @@ namespace MyTool.Editor
             m_ports.Add(m_outputPort);
             outputContainer.Add(m_outputPort);
         }
-
-
 
         public void SavePosition()
         {

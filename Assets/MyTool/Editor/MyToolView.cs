@@ -103,6 +103,96 @@ namespace MyTool.Editor
             return graphViewChange;
         }
 
+        #region NodeFunctions
+
+        private void DrawNodes()
+        {
+            foreach (ToolNode node in m_tool.Nodes)
+            {
+                AddNodeToTree(node);
+
+            }
+            Bind();
+        }
+
+        private ToolEditorNode GetNode(string nodeId)
+        {
+            ToolEditorNode node = null;
+
+            m_nodeDictionary.TryGetValue(nodeId, out node);
+
+            return node;
+        }
+
+        private void RemoveNode(ToolEditorNode editorNode)
+        {
+            m_tool.Nodes.Remove(editorNode.Node);
+            m_nodeDictionary.Remove(editorNode.Node.id);
+            m_toolNodes.Remove(editorNode);
+            m_serializedObject.Update();
+        }
+
+        public void Add(ToolNode node)
+        {
+            Undo.RecordObject(m_serializedObject.targetObject, "Added Node");
+
+            m_tool.Nodes.Add(node);
+
+            m_serializedObject.Update();
+
+            AddNodeToTree(node);
+            Bind();
+        }
+
+        private void AddNodeToTree(ToolNode node)
+        {
+            node.typeName = node.GetType().AssemblyQualifiedName;
+
+            ToolEditorNode editorNode = new ToolEditorNode(node, m_serializedObject);
+            editorNode.SetPosition(node.position);
+
+            m_toolNodes.Add(editorNode);
+            m_nodeDictionary.Add(node.id, editorNode);
+            AddElement(editorNode);
+        }
+
+        #endregion
+
+        #region Connections and Ports
+
+        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+        {
+            List<Port> allPorts = new List<Port>();
+            List<Port> ports = new List<Port>();
+
+            foreach (var node in m_toolNodes)
+            {
+                allPorts.AddRange(node.Ports);
+            }
+
+            foreach (Port p in allPorts)
+            {
+                if (p == startPort) continue;
+                if (p.node == startPort.node) continue;
+                if (p.direction == startPort.direction) continue;
+
+                if (p.portType == startPort.portType)
+                    ports.Add(p);
+
+            }
+
+            return ports;
+        }
+
+        private void RemoveConnection(Edge edge)
+        {
+            if (m_connectionDictionary.TryGetValue(edge, out ToolConnection connection))
+            {
+                m_tool.Connections.Remove(connection);
+                m_connectionDictionary.Remove(edge);
+            }
+        }
+
         private void CreateEdge(Edge edge)
         {
             ToolEditorNode inputNode = (ToolEditorNode)edge.input.node;
@@ -114,9 +204,10 @@ namespace MyTool.Editor
             ToolConnection connection = new ToolConnection(inputNode.Node.id, inputIndex, outputNode.Node.id, outputIndex);
 
             m_tool.Connections.Add(connection);
+            m_connectionDictionary.Add(edge, connection);
         }
 
-        private void DrawConnections() 
+        private void DrawConnections()
         {
             if (m_tool.Connections == null)
                 return;
@@ -152,94 +243,12 @@ namespace MyTool.Editor
             m_connectionDictionary.Add(edge, connetion);
         }
 
-        private ToolEditorNode GetNode(string nodeId)
-        {
-            ToolEditorNode node = null;
-
-            m_nodeDictionary.TryGetValue(nodeId, out node);
-
-            return node;
-        }
-
-        private void RemoveNode(ToolEditorNode editorNode)
-        {
-            m_tool.Nodes.Remove(editorNode.Node);
-            m_nodeDictionary.Remove(editorNode.Node.id);
-            m_toolNodes.Remove(editorNode);
-            m_serializedObject.Update();
-        }
-
-        private void RemoveConnection(Edge edge)
-        {
-            if(m_connectionDictionary.TryGetValue(edge, out ToolConnection connection))
-            {
-                m_tool.Connections.Remove(connection);
-                m_connectionDictionary.Remove(edge);
-            }
-        }
-
-        private void DrawNodes()
-        {
-            foreach (ToolNode node in m_tool.Nodes)
-            {
-                AddNodeToTree(node);
-
-            }
-            Bind();
-        }
+        #endregion
 
         private void ShowSearchWindow(NodeCreationContext context)
         {
             m_searchProvider.target = (VisualElement)focusController.focusedElement;
             SearchWindow.Open(new SearchWindowContext(context.screenMousePosition),m_searchProvider);
-        }
-
-        public void Add(ToolNode node)
-        {
-            Undo.RecordObject(m_serializedObject.targetObject, "Added Node");
-
-            m_tool.Nodes.Add(node);
-
-            m_serializedObject.Update();
-
-            AddNodeToTree(node);
-            Bind();
-        }
-
-        private void AddNodeToTree(ToolNode node)
-        {
-            node.typeName = node.GetType().AssemblyQualifiedName;
-
-            ToolEditorNode editorNode = new ToolEditorNode(node, m_serializedObject);
-            editorNode.SetPosition(node.position);
-
-            m_toolNodes.Add(editorNode);
-            m_nodeDictionary.Add(node.id, editorNode);
-            AddElement(editorNode);
-        }
-
-        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
-        {
-            List<Port> allPorts = new List<Port>();
-            List<Port> ports = new List<Port>();
-
-            foreach (var node in m_toolNodes)
-            {
-                allPorts.AddRange(node.Ports);
-            }
-
-            foreach (Port p in allPorts)
-            {
-                if (p == startPort) continue;
-                if (p.node == startPort.node) continue;
-                if (p.direction == startPort.direction) continue;
-
-                if (p.portType == startPort.portType)
-                    ports.Add(p);
-                
-            }
-
-            return ports;
         }
 
         private void Bind()

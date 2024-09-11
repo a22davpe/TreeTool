@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace MyTool
@@ -13,6 +14,9 @@ namespace MyTool
         private List<ToolNode> m_nodes;
         [SerializeField]
         private List<ToolConnection> m_connections;
+
+        [SerializeReference]
+        public TMP_Text Text;
 
         private Dictionary<string, ToolNode> m_nodeDictionary;
 

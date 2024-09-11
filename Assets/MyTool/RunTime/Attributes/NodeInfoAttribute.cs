@@ -9,17 +9,17 @@ namespace MyTool
     {
         public string m_nodeTitle;
         private string m_menuItem;
-        private bool m_hasFlowInput;
-        private bool m_hasFlowOutput;
+        private int m_hasFlowInput;
+        private int m_hasFlowOutput;
 
         public string title => m_nodeTitle;
         public string menuItem => m_menuItem;
 
-        public bool hasFlowInput => m_hasFlowInput;
-        public bool hasFlowOutput => m_hasFlowOutput;
+        public int hasFlowInput => m_hasFlowInput;
+        public int hasFlowOutput => m_hasFlowOutput;
 
 
-        public NodeInfoAttribute(string title, string menuItem = "", bool hasFlowInput = true, bool hasFlowOutput = true)
+        public NodeInfoAttribute(string title, string menuItem = "", int hasFlowInput = 1, int hasFlowOutput = 1)
         {
             m_menuItem = menuItem;
             m_nodeTitle = title;

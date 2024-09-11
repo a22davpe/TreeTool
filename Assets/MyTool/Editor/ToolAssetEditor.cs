@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.TerrainTools;
 using UnityEditor.Callbacks;
+using UnityEditor.UIElements;
+using TMPro.EditorUtilities;
 
 namespace MyTool.Editor
 {
     [CustomEditor(typeof(ToolAsset))]
     public class ToolAssetEditor : UnityEditor.Editor
     {
+        ToolAsset asset;
+
 
         //If you double click on a tool asset it opens
         [OnOpenAsset]
@@ -27,6 +31,11 @@ namespace MyTool.Editor
             return false;
         }
 
+        private void OnEnable()
+        {
+            asset = target as ToolAsset;
+        }
+
 
         public override void OnInspectorGUI()
         {
@@ -34,6 +43,8 @@ namespace MyTool.Editor
             {
                 MyToolEditorWindow.Open((ToolAsset)target);
             }
+
+            TMP_EditorPanel.CreateEditor(asset.Text);
         }
     }
 }
