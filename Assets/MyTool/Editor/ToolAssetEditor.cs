@@ -6,6 +6,7 @@ using UnityEditor.TerrainTools;
 using UnityEditor.Callbacks;
 using UnityEditor.UIElements;
 using TMPro.EditorUtilities;
+using TMPro;
 
 namespace MyTool.Editor
 {
@@ -44,7 +45,28 @@ namespace MyTool.Editor
                 MyToolEditorWindow.Open((ToolAsset)target);
             }
 
-            TMP_EditorPanel.CreateEditor(asset.Text);
+            EditorGUI.BeginChangeCheck();
+
+            asset.numberOfSpeaker = EditorGUILayout.IntField("Speakers",asset.numberOfSpeaker, GUILayout.Height(20));
+
+            if (asset.numberOfSpeaker < 0)
+                asset.numberOfSpeaker = 0;
+
+            if (asset.speechBubbles.Count != asset.numberOfSpeaker)
+            { 
+                for (int i = 0; i < asset.numberOfSpeaker; i++)
+                {
+                    if (i == asset.speechBubbles.Count)
+                        asset.speechBubbles.Add(null);
+
+                    asset.speechBubbles[i] = (TMP_Text)EditorGUILayout.ObjectField($"Speaker {i + 1}", asset.speechBubbles[i], typeof(TMP_Text), true, GUILayout.Height(20));
+                }
+            }
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.Update();
+                EditorUtility.SetDirty(asset);
+            }
         }
     }
 }

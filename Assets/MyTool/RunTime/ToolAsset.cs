@@ -16,8 +16,10 @@ namespace MyTool
         private List<ToolConnection> m_connections;
 
         [SerializeReference]
-        public TMP_Text Text;
+        public List<TMP_Text> speechBubbles;
 
+        [SerializeField]
+        public int numberOfSpeaker;
         private Dictionary<string, ToolNode> m_nodeDictionary;
 
         public List<ToolNode> Nodes => m_nodes;

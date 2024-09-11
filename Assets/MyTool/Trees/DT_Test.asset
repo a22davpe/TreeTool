@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 5538541568341835787
   - rid: 5040947691110793219
   - rid: 5040947691110793220
+  - rid: 5538541596859695104
   m_connections:
   - inputPort:
       nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
@@ -24,11 +25,57 @@ MonoBehaviour:
       nodeId: cdac190a-7750-41b3-af4c-3a51fa45612e
       portIndex: 0
   - inputPort:
-      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
+      nodeId: d6eceb73-9122-405b-b67c-604b54d8bded
       portIndex: 1
     outputPort:
       nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
       portIndex: 0
+  - inputPort:
+      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
+      portIndex: 1
+    outputPort:
+      nodeId: d6eceb73-9122-405b-b67c-604b54d8bded
+      portIndex: 0
+  speechBubbles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4913134207352582345, guid: e1a1399718f815244884b64ee53d0d7d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4913134207352582345, guid: e1a1399718f815244884b64ee53d0d7d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  numberOfSpeaker: 2
   references:
     version: 2
     RefIds:
@@ -44,20 +91,21 @@ MonoBehaviour:
           height: 146
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        Text: 
+        SpeakerNumber: 1
+        Text: hej
     - rid: 5040947691110793220
       type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: a4aa1e13-6ff4-4f30-980f-568cf88514d1
         m_position:
           serializedVersion: 2
-          x: 666
+          x: 905
           y: 215
           width: 136
           height: 146
         typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        logMessage: 
+        logMessage: Det funka?
     - rid: 5538541568341835787
       type: {class: StartNode, ns: MyTool, asm: MyTool}
       data:
@@ -69,3 +117,17 @@ MonoBehaviour:
           width: 76
           height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5538541596859695104
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: d6eceb73-9122-405b-b67c-604b54d8bded
+        m_position:
+          serializedVersion: 2
+          x: 679
+          y: 215
+          width: 151
+          height: 165
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        SpeakerNumber: 2
+        Text: Hello

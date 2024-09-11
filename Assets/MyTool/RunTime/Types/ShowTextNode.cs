@@ -10,14 +10,13 @@ namespace MyTool
     public class ShowTextNode : ToolNode
     {
         [ExposedProperty]
-        public  TMPro.TMP_Text textObject;
+        public int SpeakerNumber=1;
         [ExposedProperty, TextArea]
         public string Text;
 
         public override string OnProcess(ToolAsset currentTool)
         {
-            Debug.Log(textObject);
-            textObject.text = Text; 
+            currentTool.speechBubbles[SpeakerNumber-1].text = Text; 
 
             return base.OnProcess(currentTool);
         }

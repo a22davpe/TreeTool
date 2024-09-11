@@ -10,6 +10,8 @@ namespace MyTool
         [SerializeField]
         ToolAsset toolAsset;
 
+        private string CurrentId;
+
         private ToolAsset toolInstance;
 
         private void OnEnable()
