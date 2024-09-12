@@ -7,9 +7,10 @@ namespace MyTool
 {
     public class TextBox : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] EventPort onPlayerHasClicked;
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log(name);
+            onPlayerHasClicked.Invoke();
         }
     }
 }

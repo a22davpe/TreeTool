@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolAsset: {fileID: 11400000, guid: 0d5e722e671825942a581607afb22d4a, type: 2}
+  onPlayerClickEvent: {fileID: 11400000, guid: fb0304c254343bf4c9af5debf132c88d, type: 2}
 --- !u!224 &70111564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -575,6 +576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextBox
       objectReference: {fileID: 0}
+    - target: {fileID: 8777838600775237488, guid: b2de3189c1682ee498c477d0b326f781, type: 3}
+      propertyPath: onPlayerHasClicked
+      value: 
+      objectReference: {fileID: 11400000, guid: fb0304c254343bf4c9af5debf132c88d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

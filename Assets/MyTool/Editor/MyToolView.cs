@@ -110,7 +110,6 @@ namespace MyTool.Editor
             foreach (ToolNode node in m_tool.Nodes)
             {
                 AddNodeToTree(node);
-
             }
             Bind();
         }

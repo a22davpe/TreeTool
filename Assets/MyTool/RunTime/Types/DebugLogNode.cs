@@ -10,11 +10,13 @@ namespace MyTool
         [ExposedProperty(), TextArea]
         public string logMessage;
 
-        public override string OnProcess(ToolAsset currentTool)
+        public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
         {
+            base.OnEnableNode(currentTool, toolObject);
+
             Debug.Log(logMessage);
 
-            return base.OnProcess(currentTool);
+            OnProcess(currentTool, toolObject);
         }
     }
 }

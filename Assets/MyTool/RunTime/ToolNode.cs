@@ -1,3 +1,4 @@
+using Codice.CM.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,14 +34,20 @@ namespace MyTool
             m_position = position;
         }
 
+        public virtual void OnEnableNode(ToolAsset currentTool, ToolObject toolObject){}
+
+        public virtual void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject) { }
+
         //Returns the next node Id 
-        public virtual string OnProcess(ToolAsset currentTool)
+        public virtual string OnProcess(ToolAsset currentTool, ToolObject toolObject)
         {
             ToolNode nextNode = currentTool.GetNodeFromOutput(m_guid, 0);
 
-            if (nextNode != null)
-                return nextNode.id;
-            return string.Empty;
+            if (nextNode == null)
+                return null;
+            toolObject.MoveToNewNode(nextNode.id);
+
+            return nextNode.id;
         }
     }
 }
