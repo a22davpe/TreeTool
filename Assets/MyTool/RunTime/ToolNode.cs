@@ -19,6 +19,8 @@ namespace MyTool
         public string id => m_guid;
         public Rect position => m_position;
 
+        protected int outputIndex = 0;
+
         public ToolNode()
         {
             NewGUID();
@@ -36,15 +38,16 @@ namespace MyTool
 
         public virtual void OnEnableNode(ToolAsset currentTool, ToolObject toolObject){}
 
-        public virtual void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject) { }
+        public virtual void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject, int buttonIndex) { }
 
         //Returns the next node Id 
         public virtual string OnProcess(ToolAsset currentTool, ToolObject toolObject)
         {
-            ToolNode nextNode = currentTool.GetNodeFromOutput(m_guid, 0);
+            ToolNode nextNode = currentTool.GetNodeFromOutput(m_guid, outputIndex);
 
             if (nextNode == null)
                 return null;
+
             toolObject.MoveToNewNode(nextNode.id);
 
             return nextNode.id;

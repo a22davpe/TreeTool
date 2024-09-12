@@ -6,12 +6,14 @@ using TMPro;
 
 namespace MyTool
 {
-    [NodeInfo("ShowText", "Text/SowText")]
+    [NodeInfo("ShowText", "Text/ShowText")]
     public class ShowTextNode : ToolNode
     {
         [ExposedProperty]
         public int SpeakerNumber=1;
-        [ExposedProperty, TextArea]
+
+        [TextArea]
+        [ExposedProperty]
         public string Text;
 
         public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
@@ -21,9 +23,9 @@ namespace MyTool
             base.OnEnableNode(currentTool, toolObject);
         }
 
-        public override void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject)
+        public override void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject, int buttonIndex)
         {
-            base.OnPlayerHasClicked(currentTool, toolObject);
+            base.OnPlayerHasClicked(currentTool, toolObject, buttonIndex);
             OnProcess(currentTool,toolObject);
         }
 

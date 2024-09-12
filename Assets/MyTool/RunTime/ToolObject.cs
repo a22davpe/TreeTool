@@ -16,7 +16,7 @@ namespace MyTool
 
         private ToolAsset toolInstance;
 
-        public EventPort onPlayerClickEvent; 
+        public IntEventPort onPlayerClickEvent; 
 
         private void OnEnable()
         {
@@ -61,9 +61,9 @@ namespace MyTool
             EnableNewNode(m_currentNodeId);
         }
 
-        private void OnPlayerClick()
+        private void OnPlayerClick(int buttonIndex)
         {
-            toolInstance.GetNode(m_currentNodeId).OnPlayerHasClicked(toolInstance, this);
+            toolInstance.GetNode(m_currentNodeId).OnPlayerHasClicked(toolInstance, this, buttonIndex);
         }
 
 

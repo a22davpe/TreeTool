@@ -9,7 +9,7 @@ namespace MyTool
     {
         public string m_nodeTitle;
         private string m_menuItem;
-        private int m_hasFlowInput;
+        public int m_hasFlowInput;
         private int m_hasFlowOutput;
 
         public string title => m_nodeTitle;

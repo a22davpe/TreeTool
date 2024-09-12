@@ -35,9 +35,4 @@ namespace MyTool
             OnInvoked?.Invoke(par1, par2);
         }
     }
-
-    public class IntEventPort : EventPort<int>
-    {
-
-    }
 }

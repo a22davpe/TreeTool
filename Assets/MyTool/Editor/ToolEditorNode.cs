@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace MyTool.Editor
 {
+    
     public class ToolEditorNode : Node
     {
         private ToolNode m_toolNode;
@@ -51,7 +52,7 @@ namespace MyTool.Editor
                 CreateFlowOutputPort();
             }
 
-            for (int i = 0; i < info.hasFlowInput; i++)
+            for (int i = 0; i < info.m_hasFlowInput; i++)
             {
                 CreateFlowInputPort();
             }

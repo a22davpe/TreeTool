@@ -17,10 +17,13 @@ MonoBehaviour:
   - rid: 5040947691110793219
   - rid: 5040947691110793220
   - rid: 5538541596859695104
+  - rid: 5040947736149753856
+  - rid: 5040947736149753857
+  - rid: 5040947736149753859
   m_connections:
   - inputPort:
-      nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
-      portIndex: 1
+      nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
+      portIndex: 3
     outputPort:
       nodeId: cdac190a-7750-41b3-af4c-3a51fa45612e
       portIndex: 0
@@ -28,7 +31,31 @@ MonoBehaviour:
       nodeId: d6eceb73-9122-405b-b67c-604b54d8bded
       portIndex: 1
     outputPort:
+      nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
+      portIndex: 0
+  - inputPort:
+      nodeId: b83b942b-660a-416a-83b8-766c1e6af0c4
+      portIndex: 1
+    outputPort:
+      nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
+      portIndex: 1
+  - inputPort:
       nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
+      portIndex: 1
+    outputPort:
+      nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
+      portIndex: 2
+  - inputPort:
+      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
+      portIndex: 1
+    outputPort:
+      nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
+      portIndex: 0
+  - inputPort:
+      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
+      portIndex: 1
+    outputPort:
+      nodeId: b83b942b-660a-416a-83b8-766c1e6af0c4
       portIndex: 0
   - inputPort:
       nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
@@ -39,11 +66,11 @@ MonoBehaviour:
   speechBubbles:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 4913134207352582345, guid: e1a1399718f815244884b64ee53d0d7d, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 4913134207352582345, guid: e1a1399718f815244884b64ee53d0d7d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -85,35 +112,81 @@ MonoBehaviour:
         m_guid: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
         m_position:
           serializedVersion: 2
-          x: 476
-          y: 215
-          width: 136
-          height: 146
+          x: 571
+          y: 268
+          width: 150
+          height: 165
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         SpeakerNumber: 1
-        Text: hej
+        Text: Du valde tredje
     - rid: 5040947691110793220
       type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: a4aa1e13-6ff4-4f30-980f-568cf88514d1
         m_position:
           serializedVersion: 2
-          x: 870
-          y: 215
+          x: 912
+          y: 61
           width: 136
           height: 146
         typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         logMessage: Det funka?
+    - rid: 5040947736149753856
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 43ad8c44-8d22-4413-9987-3bda29fcf05a
+        m_position:
+          serializedVersion: 2
+          x: 303
+          y: -26
+          width: 181
+          height: 344
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        SpeakerNumber: 0
+        MainText: Do you want to skip text?
+        Option1Text: Yes
+        Option2Text: No
+    - rid: 5040947736149753857
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: b83b942b-660a-416a-83b8-766c1e6af0c4
+        m_position:
+          serializedVersion: 2
+          x: 570
+          y: 61
+          width: 150
+          height: 165
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        SpeakerNumber: 1
+        Text: Du valde andra
+    - rid: 5040947736149753859
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 49324c55-5388-42a6-9133-2cac101d9674
+        m_position:
+          serializedVersion: 2
+          x: 269
+          y: 391
+          width: 181
+          height: 344
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        SpeakerNumber: 0
+        MainText: 
+        Option1Text: 
+        Option2Text: 
     - rid: 5538541568341835787
       type: {class: StartNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: cdac190a-7750-41b3-af4c-3a51fa45612e
         m_position:
           serializedVersion: 2
-          x: 324
-          y: 264
+          x: 141
+          y: 37
           width: 76
           height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -123,11 +196,11 @@ MonoBehaviour:
         m_guid: d6eceb73-9122-405b-b67c-604b54d8bded
         m_position:
           serializedVersion: 2
-          x: 680
-          y: 215
+          x: 570
+          y: -146
           width: 151
           height: 165
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         SpeakerNumber: 2
-        Text: Hello
+        Text: "Du valde f\xF6rsta"
