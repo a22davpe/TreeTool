@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 
 namespace MyTool
@@ -8,8 +9,7 @@ namespace MyTool
     [NodeInfo("DialogueBranch", "Text/Dialogue Branch",1,3)]
     public class DialogueBranch : ToolNode
     {
-        [ExposedProperty]
-        public int SpeakerNumber;
+
         [TextArea,ExposedProperty]
         public string MainText;
         
@@ -19,13 +19,35 @@ namespace MyTool
         [ExposedProperty, TextArea]
         public string Option2Text;
 
-        float uwu;
+        [ExposedProperty, TextArea]
+        public string Option3Text;
+
 
         public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
         {
-            currentTool.speechBubbles[SpeakerNumber].text = MainText;
+            toolObject.MainText.text = MainText;
+
+            if (!string.IsNullOrEmpty(Option1Text))
+                EnableText(Option1Text, toolObject.optionsTexts[0]);
+
+            if (!string.IsNullOrEmpty(Option1Text))
+                EnableText(Option2Text, toolObject.optionsTexts[1]);
+
+            if (!string.IsNullOrEmpty(Option1Text))
+                EnableText(Option3Text, toolObject.optionsTexts[2]);
 
             base.OnEnableNode(currentTool, toolObject);
+        }
+
+        private void EnableText(string textString, TMP_Text textInstance)
+        {
+            textInstance.enabled = true;
+            textInstance.text = textString;
+        }
+
+        private void DisableText(TMP_Text textInstance)
+        {
+            textInstance.enabled = false;
         }
 
 
@@ -35,7 +57,24 @@ namespace MyTool
                 return;
             base.OnPlayerHasClicked(currentTool, toolObject, buttonIndex);
             outputIndex = buttonIndex-1;
+            
             OnProcess(currentTool,toolObject);
+        }
+
+
+        public override string OnProcess(ToolAsset currentTool, ToolObject toolObject)
+        {
+            if (!string.IsNullOrEmpty(Option1Text))
+                DisableText(toolObject.optionsTexts[0]);
+
+            if (!string.IsNullOrEmpty(Option1Text))
+                DisableText(toolObject.optionsTexts[1]);
+
+            if (!string.IsNullOrEmpty(Option1Text))
+                DisableText(toolObject.optionsTexts[2]);
+
+
+            return base.OnProcess(currentTool, toolObject);
         }
 
 

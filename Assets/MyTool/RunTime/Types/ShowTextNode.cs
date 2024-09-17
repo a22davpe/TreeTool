@@ -9,8 +9,7 @@ namespace MyTool
     [NodeInfo("ShowText", "Text/ShowText")]
     public class ShowTextNode : ToolNode
     {
-        [ExposedProperty]
-        public int SpeakerNumber=1;
+
 
         [TextArea]
         [ExposedProperty]
@@ -18,7 +17,7 @@ namespace MyTool
 
         public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
         {
-            currentTool.speechBubbles[SpeakerNumber - 1].text = Text;
+            toolObject.MainText.text = Text;
 
             base.OnEnableNode(currentTool, toolObject);
         }

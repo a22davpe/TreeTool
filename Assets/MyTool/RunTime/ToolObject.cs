@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MyTool
 {
@@ -10,6 +12,8 @@ namespace MyTool
     {
         [SerializeField]
         ToolAsset toolAsset;
+        public TMP_Text MainText;
+        public List<TMP_Text> optionsTexts;
 
         private string m_currentNodeId;
         private string m_nextNodeId;
@@ -66,7 +70,20 @@ namespace MyTool
             toolInstance.GetNode(m_currentNodeId).OnPlayerHasClicked(toolInstance, this, buttonIndex);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnPlayerClick(0);
 
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                OnPlayerClick(1);
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                OnPlayerClick(2);
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+                OnPlayerClick(3);
+        }
 
 
         private void ProcessAndMoveToNextNode(ToolNode startNode)
