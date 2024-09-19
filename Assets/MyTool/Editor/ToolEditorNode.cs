@@ -37,6 +37,9 @@ namespace MyTool.Editor
 
             title = info.title;
 
+            if (!string.IsNullOrEmpty(info.toolTip))
+                tooltip = info.toolTip;
+
             m_ports = new List<Port>();
 
             string[] depths = info.menuItem.Split('/');
@@ -63,6 +66,8 @@ namespace MyTool.Editor
                    
                     PropertyField field =  DrawProperty(property.Name);                }
             }
+
+
 
             RefreshExpandedState();
         }

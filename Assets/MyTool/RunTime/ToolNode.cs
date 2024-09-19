@@ -46,7 +46,10 @@ namespace MyTool
             ToolNode nextNode = currentTool.GetNodeFromOutput(m_guid, outputIndex);
 
             if (nextNode == null)
+            { 
+                toolObject.EndDialogue();
                 return null;
+            }
 
             toolObject.MoveToNewNode(nextNode.id);
 

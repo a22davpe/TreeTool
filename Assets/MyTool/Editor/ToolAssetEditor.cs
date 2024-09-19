@@ -44,7 +44,7 @@ namespace MyTool.Editor
             {
                 MyToolEditorWindow.Open((ToolAsset)target);
             }
-
+            /*
             EditorGUI.BeginChangeCheck();
 
             asset.numberOfSpeaker = EditorGUILayout.IntField("Speakers",asset.numberOfSpeaker, GUILayout.Height(20));
@@ -66,7 +66,7 @@ namespace MyTool.Editor
             {
                 serializedObject.Update();
                 EditorUtility.SetDirty(asset);
-            }
-        }
+            }*/
+        } 
     }
 }

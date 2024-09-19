@@ -6,7 +6,7 @@ using TMPro;
 
 namespace MyTool
 {
-    [NodeInfo("ShowText", "Text/ShowText")]
+    [NodeInfo("ShowText", "Text/ShowText", "Puts text in the main text field and waits on plyer input")]
     public class ShowTextNode : ToolNode
     {
 

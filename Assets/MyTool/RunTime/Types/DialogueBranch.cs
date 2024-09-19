@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MyTool
 {
-    [NodeInfo("DialogueBranch", "Text/Dialogue Branch",1,3)]
+    [NodeInfo("DialogueBranch", "Text/Dialogue Branch","Puts text in the mainTextFeild and options in the options field and waits on plyer input",1,3)]
     public class DialogueBranch : ToolNode
     {
 

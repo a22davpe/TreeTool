@@ -15,16 +15,24 @@ namespace MyTool
         public string title => m_nodeTitle;
         public string menuItem => m_menuItem;
 
+
         public int hasFlowInput => m_hasFlowInput;
         public int hasFlowOutput => m_hasFlowOutput;
 
+        private string m_toolTip;
 
-        public NodeInfoAttribute(string title, string menuItem = "", int hasFlowInput = 1, int hasFlowOutput = 1)
+        public string toolTip => m_toolTip;
+
+
+        public NodeInfoAttribute(string title, string menuItem = "", string toolTip = "", int hasFlowInput = 1, int hasFlowOutput = 1)
         {
             m_menuItem = menuItem;
             m_nodeTitle = title;
             m_hasFlowInput = hasFlowInput;
             m_hasFlowOutput = hasFlowOutput;
+            m_toolTip = toolTip;
         }
+    
+
     }
 }

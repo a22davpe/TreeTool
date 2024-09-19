@@ -15,10 +15,10 @@ MonoBehaviour:
   m_nodes:
   - rid: 5538541568341835787
   - rid: 5040947691110793219
-  - rid: 5040947691110793220
   - rid: 5538541596859695104
   - rid: 5040947736149753856
   - rid: 5040947736149753857
+  - rid: 5538541773404504064
   m_connections:
   - inputPort:
       nodeId: d6eceb73-9122-405b-b67c-604b54d8bded
@@ -39,34 +39,10 @@ MonoBehaviour:
       nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
       portIndex: 2
   - inputPort:
-      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
-      portIndex: 1
-    outputPort:
-      nodeId: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
-      portIndex: 0
-  - inputPort:
-      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
-      portIndex: 1
-    outputPort:
-      nodeId: b83b942b-660a-416a-83b8-766c1e6af0c4
-      portIndex: 0
-  - inputPort:
-      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
-      portIndex: 1
-    outputPort:
-      nodeId: d6eceb73-9122-405b-b67c-604b54d8bded
-      portIndex: 0
-  - inputPort:
       nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
       portIndex: 3
     outputPort:
       nodeId: cdac190a-7750-41b3-af4c-3a51fa45612e
-      portIndex: 0
-  - inputPort:
-      nodeId: 43ad8c44-8d22-4413-9987-3bda29fcf05a
-      portIndex: 3
-    outputPort:
-      nodeId: a4aa1e13-6ff4-4f30-980f-568cf88514d1
       portIndex: 0
   speechBubbles:
   - {fileID: 0}
@@ -117,52 +93,41 @@ MonoBehaviour:
         m_guid: 9c925bdf-6b70-4352-a186-8bcbc1a73dc4
         m_position:
           serializedVersion: 2
-          x: 571
-          y: 268
-          width: 150
-          height: 165
+          x: 379
+          y: 71
+          width: 444
+          height: 146
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        Text: Du valde tredje
-    - rid: 5040947691110793220
-      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
-      data:
-        m_guid: a4aa1e13-6ff4-4f30-980f-568cf88514d1
-        m_position:
-          serializedVersion: 2
-          x: 912
-          y: 61
-          width: 136
-          height: 146
-        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        logMessage: Det funka?
+        Text: If you want them to reflect on how trying new things brought them closer,
+          turn to
     - rid: 5040947736149753856
       type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
       data:
         m_guid: 43ad8c44-8d22-4413-9987-3bda29fcf05a
         m_position:
           serializedVersion: 2
-          x: 210
-          y: -32
-          width: 155
+          x: -178
+          y: -276
+          width: 444
           height: 398
         typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         MainText: Do you want to skip text?
         Option1Text: 1
         Option2Text: 2
-        Option3Text: 3
+        Option3Text: If you want them to reflect on how trying new things brought
+          them closer, turn to
     - rid: 5040947736149753857
       type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
       data:
         m_guid: b83b942b-660a-416a-83b8-766c1e6af0c4
         m_position:
           serializedVersion: 2
-          x: 570
-          y: 61
-          width: 150
-          height: 165
+          x: 420
+          y: -251
+          width: 136
+          height: 146
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         Text: Du valde andra
@@ -172,8 +137,8 @@ MonoBehaviour:
         m_guid: cdac190a-7750-41b3-af4c-3a51fa45612e
         m_position:
           serializedVersion: 2
-          x: -91
-          y: -146
+          x: -308
+          y: -276
           width: 76
           height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -183,10 +148,23 @@ MonoBehaviour:
         m_guid: d6eceb73-9122-405b-b67c-604b54d8bded
         m_position:
           serializedVersion: 2
-          x: 570
-          y: -146
-          width: 151
-          height: 165
+          x: 508
+          y: -522
+          width: 136
+          height: 146
         typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         Text: "Du valde f\xF6rsta"
+    - rid: 5538541773404504064
+      type: {class: DebugLogNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 80f29b1e-870f-4828-afb6-4bdadcc8c72d
+        m_position:
+          serializedVersion: 2
+          x: 699
+          y: -154
+          width: 136
+          height: 146
+        typeName: MyTool.DebugLogNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        logMessage: 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MyTool
 {
-    [NodeInfo("Debug Log", "Debug/Debug Log")]
+    [NodeInfo("Debug Log", "Debug/Debug Log", "Writes a message in the console when the node is reached")]
     public class DebugLogNode : ToolNode
     {
         [ExposedProperty(), TextArea]

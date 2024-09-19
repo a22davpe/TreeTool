@@ -85,18 +85,32 @@ namespace MyTool
                 OnPlayerClick(3);
         }
 
+        public void EndDialogue()
+        {
+            MainText.enabled = false;
 
-        private void ProcessAndMoveToNextNode(ToolNode startNode)
-        { 
-
-            string nextNodeId = startNode.OnProcess(toolInstance, this);
-
-            if (!string.IsNullOrEmpty(nextNodeId))
+            foreach (TMP_Text text in optionsTexts)
             {
-                ToolNode node = toolInstance.GetNode(nextNodeId);
-
-                ProcessAndMoveToNextNode(node);
+                text.enabled = false;
             }
         }
+
+        public void StartDialogue()
+        {
+            ExecuteAsset();
+        }
+
+        //private void ProcessAndMoveToNextNode(ToolNode startNode)
+        //{ 
+
+        //    string nextNodeId = startNode.OnProcess(toolInstance, this);
+
+        //    if (!string.IsNullOrEmpty(nextNodeId))
+        //    {
+        //        ToolNode node = toolInstance.GetNode(nextNodeId);
+
+        //        ProcessAndMoveToNextNode(node);
+        //    }
+        //}
     }
 }

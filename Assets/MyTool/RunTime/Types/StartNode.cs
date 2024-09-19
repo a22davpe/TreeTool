@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MyTool
 {
-    [NodeInfo("Start", "Process/Start", 0)]
+    [NodeInfo("Start", "Process/Start","", 0)]
     public class StartNode : ToolNode
     {
         public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)

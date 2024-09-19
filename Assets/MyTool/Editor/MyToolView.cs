@@ -53,6 +53,7 @@ namespace MyTool.Editor
             this.AddManipulator(new RectangleSelector());
             this.AddManipulator(new ClickSelector());
 
+            SetupZoom(0.1f,100);
             DrawNodes();
             DrawConnections();
 
