@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fcd4df0555125409c739f70965bcec, type: 3}
+  m_Name: FelixGW
+  m_EditorClassIdentifier: 
+  m_nodes:
+  - rid: 164763516048769024
+  m_connections: []
+  speechBubbles: []
+  numberOfSpeaker: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 164763516048769024
+      type: {class: StartNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: cb7a1e06-1283-4a8b-8c8f-f7aef8826a82
+        m_position:
+          serializedVersion: 2
+          x: 357
+          y: 258
+          width: 76
+          height: 77
+        typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
