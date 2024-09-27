@@ -74,8 +74,8 @@ MonoBehaviour:
         m_guid: cb7a1e06-1283-4a8b-8c8f-f7aef8826a82
         m_position:
           serializedVersion: 2
-          x: 357
-          y: 258
+          x: 250
+          y: -288
           width: 76
           height: 77
         typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
