@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fcd4df0555125409c739f70965bcec, type: 3}
+  m_Name: EmanuelGW
+  m_EditorClassIdentifier: 
+  m_nodes:
+  - rid: 5040948071621197836
+  - rid: 5040948071621197839
+  - rid: 5040948071621197840
+  - rid: 5040948071621197841
+  - rid: 5040948071621197842
+  - rid: 5040948071621197844
+  - rid: 5040948071621197845
+  - rid: 5040948071621197847
+  m_connections:
+  - inputPort:
+      nodeId: 74d1bc3f-b65a-4aee-a8bf-f72ed26ce457
+      portIndex: 3
+    outputPort:
+      nodeId: 5dc1066f-5de4-4cfd-a90a-c3e144bb25d7
+      portIndex: 0
+  - inputPort:
+      nodeId: 8f3c17fd-51cb-483a-ba37-6330178e5f58
+      portIndex: 3
+    outputPort:
+      nodeId: 74d1bc3f-b65a-4aee-a8bf-f72ed26ce457
+      portIndex: 0
+  - inputPort:
+      nodeId: 3c88496d-88d6-47cd-b95d-fc729c05c153
+      portIndex: 3
+    outputPort:
+      nodeId: 74d1bc3f-b65a-4aee-a8bf-f72ed26ce457
+      portIndex: 1
+  - inputPort:
+      nodeId: ff8bb663-d5bd-40c8-b695-9a8e78bd30e5
+      portIndex: 1
+    outputPort:
+      nodeId: 8f3c17fd-51cb-483a-ba37-6330178e5f58
+      portIndex: 0
+  - inputPort:
+      nodeId: 5a89adee-7d11-490c-aca2-b24f4223e8d2
+      portIndex: 1
+    outputPort:
+      nodeId: 8f3c17fd-51cb-483a-ba37-6330178e5f58
+      portIndex: 1
+  - inputPort:
+      nodeId: ca0507d2-3057-41e7-8a0d-255f67f44934
+      portIndex: 1
+    outputPort:
+      nodeId: 3c88496d-88d6-47cd-b95d-fc729c05c153
+      portIndex: 0
+  - inputPort:
+      nodeId: 8f3c17fd-51cb-483a-ba37-6330178e5f58
+      portIndex: 3
+    outputPort:
+      nodeId: 3c88496d-88d6-47cd-b95d-fc729c05c153
+      portIndex: 1
+  - inputPort:
+      nodeId: 5397492a-1865-4ac8-b8b9-8990ab5ec60a
+      portIndex: 3
+    outputPort:
+      nodeId: 74d1bc3f-b65a-4aee-a8bf-f72ed26ce457
+      portIndex: 2
+  speechBubbles: []
+  numberOfSpeaker: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5040948071621197836
+      type: {class: StartNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 5dc1066f-5de4-4cfd-a90a-c3e144bb25d7
+        m_position:
+          serializedVersion: 2
+          x: 1328
+          y: -607
+          width: 76
+          height: 77
+        typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5040948071621197839
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 74d1bc3f-b65a-4aee-a8bf-f72ed26ce457
+        m_position:
+          serializedVersion: 2
+          x: 1266
+          y: -412
+          width: 277
+          height: 398
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: '"How about the classic? Eggs, bacon and toast?"'
+        Option1Text: I say we go for the classic!
+        Option2Text: Do you perhaps have any other suggestions?
+        Option3Text: 
+    - rid: 5040948071621197840
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 8f3c17fd-51cb-483a-ba37-6330178e5f58
+        m_position:
+          serializedVersion: 2
+          x: 1590
+          y: 244
+          width: 306
+          height: 398
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: '"Breakfast is served!" Tom looks a bit uneasy though...'
+        Option1Text: ask how he is feeling
+        Option2Text: Ignore him
+        Option3Text: 
+    - rid: 5040948071621197841
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 3c88496d-88d6-47cd-b95d-fc729c05c153
+        m_position:
+          serializedVersion: 2
+          x: 1064
+          y: 244
+          width: 340
+          height: 398
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: 'Tom grins and says "Let''s try the special: huevos rancheros!"'
+        Option1Text: sounds great!
+        Option2Text: I'd rather go with the safe option of the classic...
+        Option3Text: 
+    - rid: 5040948071621197842
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: ff8bb663-d5bd-40c8-b695-9a8e78bd30e5
+        m_position:
+          serializedVersion: 2
+          x: 1516
+          y: 910
+          width: 259
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: How are you feeling Tom? Is anything wrong?
+    - rid: 5040948071621197844
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 5a89adee-7d11-490c-aca2-b24f4223e8d2
+        m_position:
+          serializedVersion: 2
+          x: 1980
+          y: 910
+          width: 237
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: Jake continues to eat, ignoring his friend.
+    - rid: 5040948071621197845
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: ca0507d2-3057-41e7-8a0d-255f67f44934
+        m_position:
+          serializedVersion: 2
+          x: 994
+          y: 866
+          width: 239
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: '"Huevos rancheros was a good call Tom!"'
+    - rid: 5040948071621197847
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 5397492a-1865-4ac8-b8b9-8990ab5ec60a
+        m_position:
+          serializedVersion: 2
+          x: 681
+          y: 244
+          width: 136
+          height: 398
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: 
+        Option1Text: 
+        Option2Text: 
+        Option3Text: 

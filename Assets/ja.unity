@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa31155412426f41a0545e40a0ee67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolAsset: {fileID: 11400000, guid: 7a0d36d8215343641b7c8bd46b225b08, type: 2}
+  toolAsset: {fileID: 11400000, guid: b5e7f13001bd2cb488158946847ea024, type: 2}
   MainText: {fileID: 1988129914}
   optionsTexts:
   - {fileID: 2112284077}
