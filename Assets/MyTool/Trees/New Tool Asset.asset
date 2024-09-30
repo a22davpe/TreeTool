@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fcd4df0555125409c739f70965bcec, type: 3}
+  m_Name: New Tool Asset
+  m_EditorClassIdentifier: 
+  m_nodes:
+  - rid: 5538542027237228544
+  - rid: 5538542027237228545
+  - rid: 5538542027237228546
+  - rid: 5538542027237228547
+  - rid: 5538542027237228548
+  m_connections:
+  - inputPort:
+      nodeId: 5ee15c0e-8b2c-4c0f-b558-b1763629ca61
+      portIndex: 3
+    outputPort:
+      nodeId: 110e631f-96d8-4886-8765-5bb8a0bcfac5
+      portIndex: 0
+  - inputPort:
+      nodeId: df127cca-c919-47de-b2a2-fe96bd7f4242
+      portIndex: 1
+    outputPort:
+      nodeId: 5ee15c0e-8b2c-4c0f-b558-b1763629ca61
+      portIndex: 0
+  - inputPort:
+      nodeId: 2b003450-b874-413a-a8d1-93613d3f4e75
+      portIndex: 1
+    outputPort:
+      nodeId: 5ee15c0e-8b2c-4c0f-b558-b1763629ca61
+      portIndex: 1
+  - inputPort:
+      nodeId: 87444d69-a628-4906-af55-e45dec5b1196
+      portIndex: 1
+    outputPort:
+      nodeId: 5ee15c0e-8b2c-4c0f-b558-b1763629ca61
+      portIndex: 2
+  speechBubbles: []
+  numberOfSpeaker: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5538542027237228544
+      type: {class: StartNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 110e631f-96d8-4886-8765-5bb8a0bcfac5
+        m_position:
+          serializedVersion: 2
+          x: 338
+          y: 267
+          width: 76
+          height: 77
+        typeName: MyTool.StartNode, MyTool, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - rid: 5538542027237228545
+      type: {class: DialogueBranch, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 5ee15c0e-8b2c-4c0f-b558-b1763629ca61
+        m_position:
+          serializedVersion: 2
+          x: 575
+          y: 179
+          width: 136
+          height: 398
+        typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: Pick a number
+        Option1Text: 1
+        Option2Text: 2
+        Option3Text: 3
+    - rid: 5538542027237228546
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 2b003450-b874-413a-a8d1-93613d3f4e75
+        m_position:
+          serializedVersion: 2
+          x: 777
+          y: 198
+          width: 136
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: You picked 2
+    - rid: 5538542027237228547
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: df127cca-c919-47de-b2a2-fe96bd7f4242
+        m_position:
+          serializedVersion: 2
+          x: 873
+          y: -56
+          width: 136
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: You picked 1
+    - rid: 5538542027237228548
+      type: {class: ShowTextNode, ns: MyTool, asm: MyTool}
+      data:
+        m_guid: 87444d69-a628-4906-af55-e45dec5b1196
+        m_position:
+          serializedVersion: 2
+          x: 873
+          y: 477
+          width: 136
+          height: 146
+        typeName: MyTool.ShowTextNode, MyTool, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        Text: You picked 3

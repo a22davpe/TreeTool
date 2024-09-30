@@ -108,8 +108,8 @@ MonoBehaviour:
         m_guid: 8f3c17fd-51cb-483a-ba37-6330178e5f58
         m_position:
           serializedVersion: 2
-          x: 1590
-          y: 244
+          x: 1659
+          y: 265
           width: 306
           height: 398
         typeName: MyTool.DialogueBranch, MyTool, Version=0.0.0.0, Culture=neutral,
