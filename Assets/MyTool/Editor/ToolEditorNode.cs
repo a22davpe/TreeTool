@@ -31,41 +31,33 @@ namespace MyTool.Editor
 
             m_serializedObject = ToolObject; 
             m_toolNode = node;
-
-            Type typeInfo = node.GetType();
-            NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
-
-            title = info.title;
-
-            if (!string.IsNullOrEmpty(info.toolTip))
-                tooltip = info.toolTip;
-
             m_ports = new List<Port>();
 
-            string[] depths = info.menuItem.Split('/');
-            foreach (string depth in depths)
-            {
-                this.AddToClassList(depth.ToLower().Replace(' ', '-'));
-            }
+            //Type typeInfo = node.GetType();
+            //NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
 
-            this.name = typeInfo.Name;
+            //title = info.title;
 
-            for (int i = 0; i < info.hasFlowOutput; i++)
-            {
-                CreateFlowOutputPort();
-            }
+            //if (!string.IsNullOrEmpty(info.toolTip))
+            //    tooltip = info.toolTip;
 
-            for (int i = 0; i < info.m_hasFlowInput; i++)
-            {
-                CreateFlowInputPort();
-            }
 
-            foreach (FieldInfo property in typeInfo.GetFields())
-            {
-                if(property.GetCustomAttribute<ExposedPropertyAttribute>() is ExposedPropertyAttribute exposedProperty){
+            //string[] depths = info.menuItem.Split('/');
+            //foreach (string depth in depths)
+            //{
+            //    this.AddToClassList(depth.ToLower().Replace(' ', '-'));
+            //}
+
+            //this.name = typeInfo.Name;
+
+            node.Draw(this);
+
+            //foreach (FieldInfo property in typeInfo.GetFields())
+            //{
+            //    if(property.GetCustomAttribute<ExposedPropertyAttribute>() is ExposedPropertyAttribute exposedProperty){
                    
-                    PropertyField field =  DrawProperty(property.Name);                }
-            }
+            //        PropertyField field =  DrawProperty(property.Name);                }
+            //}
 
 
 
@@ -107,7 +99,7 @@ namespace MyTool.Editor
             }
         }
 
-        private void CreateFlowInputPort()
+        public void CreateFlowInputPort()
         {
 
             Port input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(PortTypes.FlowPort));
@@ -117,7 +109,7 @@ namespace MyTool.Editor
             inputContainer.Add(input);
         }
 
-        private void CreateFlowOutputPort()
+        public void CreateFlowOutputPort(string Name, string tooltip = "")
         {
             m_outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(PortTypes.FlowPort));
             m_outputPort.portName = "Output";

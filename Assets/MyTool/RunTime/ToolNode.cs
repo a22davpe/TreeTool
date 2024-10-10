@@ -2,6 +2,7 @@ using Codice.CM.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace MyTool
@@ -36,6 +37,10 @@ namespace MyTool
             m_position = position;
         }
 
+        public void Draw(Node node) { 
+           // node.
+        }
+
         public virtual void OnEnableNode(ToolAsset currentTool, ToolObject toolObject){}
 
         public virtual void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject, int buttonIndex) { }
@@ -55,5 +60,6 @@ namespace MyTool
 
             return nextNode.id;
         }
+
     }
 }
