@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fcd4df0555125409c739f70965bcec, type: 3}
+  m_Name: New Tool Asset 1
+  m_EditorClassIdentifier: 
+  m_nodes:
+  - rid: 290322984648048644
+  - rid: 290322984648048645
+  m_connections: []
+  speechBubbles: []
+  numberOfSpeaker: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 290322984648048644
+      type: {class: DebugLogNode, ns: MyTool, asm: NewToolAssemblyDef}
+      data:
+        m_guid: 4ed34ee2-b29d-4cbe-8522-b60f84427dc9
+        m_position:
+          serializedVersion: 2
+          x: 240
+          y: 130
+          width: 136
+          height: 146
+        typeName: MyTool.DebugLogNode, NewToolAssemblyDef, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        logMessage: 
+    - rid: 290322984648048645
+      type: {class: DialogueBranch, ns: MyTool, asm: NewToolAssemblyDef}
+      data:
+        m_guid: 7a591da4-e609-4c5c-85b6-a4811d1db36f
+        m_position:
+          serializedVersion: 2
+          x: 659
+          y: 69
+          width: 136
+          height: 350
+        typeName: MyTool.DialogueBranch, NewToolAssemblyDef, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        MainText: 
+        Option1Text: 
+        Option2Text: 
+        Option3Text: 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MyTool
 {
-    [NodeInfo("DialogueBranch", "Text/Dialogue Branch","Puts text in the mainTextFeild and options in the options field and waits on plyer input",1,3)]
+    [NodeInfo("DialogueBranch", "Text/Dialogue Branch","Puts text in the mainTextFeild and options in the options field and waits on plyer input")]
     public class DialogueBranch : ToolNode
     {
 
@@ -23,7 +23,7 @@ namespace MyTool
         public string Option3Text;
 
 
-        public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
+        public override void OnEnterNode(ToolAsset currentTool, ToolObject toolObject)
         {
             toolObject.MainText.text = MainText;
 
@@ -36,7 +36,7 @@ namespace MyTool
             if (!string.IsNullOrEmpty(Option1Text))
                 EnableText(Option3Text, toolObject.optionsTexts[2]);
 
-            base.OnEnableNode(currentTool, toolObject);
+            base.OnEnterNode(currentTool, toolObject);
         }
 
         private void EnableText(string textString, TMP_Text textInstance)
@@ -58,11 +58,11 @@ namespace MyTool
             base.OnPlayerHasClicked(currentTool, toolObject, buttonIndex);
             outputIndex = buttonIndex-1;
             
-            OnProcess(currentTool,toolObject);
+            ExitNode(currentTool,toolObject);
         }
 
 
-        public override string OnProcess(ToolAsset currentTool, ToolObject toolObject)
+        public override string ExitNode(ToolAsset currentTool, ToolObject toolObject)
         {
             if (!string.IsNullOrEmpty(Option1Text))
                 DisableText(toolObject.optionsTexts[0]);
@@ -74,7 +74,7 @@ namespace MyTool
                 DisableText(toolObject.optionsTexts[2]);
 
 
-            return base.OnProcess(currentTool, toolObject);
+            return base.ExitNode(currentTool, toolObject);
         }
 
 

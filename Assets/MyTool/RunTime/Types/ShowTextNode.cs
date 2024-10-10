@@ -15,22 +15,22 @@ namespace MyTool
         [ExposedProperty]
         public string Text;
 
-        public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
+        public override void OnEnterNode(ToolAsset currentTool, ToolObject toolObject)
         {
             toolObject.MainText.text = Text;
 
-            base.OnEnableNode(currentTool, toolObject);
+            base.OnEnterNode(currentTool, toolObject);
         }
 
         public override void OnPlayerHasClicked(ToolAsset currentTool, ToolObject toolObject, int buttonIndex)
         {
             base.OnPlayerHasClicked(currentTool, toolObject, buttonIndex);
-            OnProcess(currentTool,toolObject);
+            ExitNode(currentTool,toolObject);
         }
 
-        public override string OnProcess(ToolAsset currentTool, ToolObject toolObject)
+        public override string ExitNode(ToolAsset currentTool, ToolObject toolObject)
         {
-            return base.OnProcess(currentTool, toolObject);
+            return base.ExitNode(currentTool, toolObject);
         }
     }
 }

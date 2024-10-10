@@ -8,7 +8,7 @@ using UnityEditor.UIElements;
 using TMPro.EditorUtilities;
 using TMPro;
 
-namespace MyTool.Editor
+namespace MyTool
 {
     [CustomEditor(typeof(ToolAsset))]
     public class ToolAssetEditor : UnityEditor.Editor

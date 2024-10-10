@@ -45,12 +45,12 @@ namespace MyTool
         
         private void EnableNewNode(string nodeId)
         {
-            toolInstance.GetNode(m_currentNodeId).OnEnableNode(toolInstance, this);
+            toolInstance.GetNode(m_currentNodeId).OnEnterNode(toolInstance, this);
         }
 
         public void ProcessCurrentNode()
         {
-            m_nextNodeId = toolInstance.GetNode(m_currentNodeId).OnProcess(toolInstance, this);
+            m_nextNodeId = toolInstance.GetNode(m_currentNodeId).ExitNode(toolInstance, this);
         }
 
         public void MoveToNewNode()

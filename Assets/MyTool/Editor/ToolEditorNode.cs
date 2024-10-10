@@ -8,7 +8,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-namespace MyTool.Editor
+namespace MyTool
 {
     
     public class ToolEditorNode : Node
@@ -33,31 +33,33 @@ namespace MyTool.Editor
             m_toolNode = node;
             m_ports = new List<Port>();
 
-            //Type typeInfo = node.GetType();
-            //NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
+            Type typeInfo = node.GetType();
+            NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
 
-            //title = info.title;
+            title = info.title;
 
             //if (!string.IsNullOrEmpty(info.toolTip))
             //    tooltip = info.toolTip;
 
 
-            //string[] depths = info.menuItem.Split('/');
-            //foreach (string depth in depths)
-            //{
-            //    this.AddToClassList(depth.ToLower().Replace(' ', '-'));
-            //}
+            string[] depths = info.menuItem.Split('/');
+            foreach (string depth in depths)
+            {
+                this.AddToClassList(depth.ToLower().Replace(' ', '-'));
+            }
 
-            //this.name = typeInfo.Name;
+            this.name = typeInfo.Name;
 
             node.Draw(this);
 
-            //foreach (FieldInfo property in typeInfo.GetFields())
-            //{
-            //    if(property.GetCustomAttribute<ExposedPropertyAttribute>() is ExposedPropertyAttribute exposedProperty){
-                   
-            //        PropertyField field =  DrawProperty(property.Name);                }
-            //}
+            foreach (FieldInfo property in typeInfo.GetFields())
+            {
+                if (property.GetCustomAttribute<ExposedPropertyAttribute>() is ExposedPropertyAttribute exposedProperty)
+                {
+
+                    PropertyField field = DrawProperty(property.Name);
+                }
+            }
 
 
 
@@ -99,21 +101,21 @@ namespace MyTool.Editor
             }
         }
 
-        public void CreateFlowInputPort()
+        public void CreateInputPort(string name, string tooltip = "")
         {
 
             Port input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(PortTypes.FlowPort));
-            input.portName = "Input";
-            input.tooltip = "Flow input";
+            input.portName = name;
+            input.tooltip = tooltip;
             m_ports.Add(input);
             inputContainer.Add(input);
         }
 
-        public void CreateFlowOutputPort(string Name, string tooltip = "")
+        public void CreateOutputPort(string name, string tooltip = "")
         {
             m_outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(PortTypes.FlowPort));
-            m_outputPort.portName = "Output";
-            m_outputPort.tooltip = "Flow output";
+            m_outputPort.portName = name;
+            m_outputPort.tooltip = tooltip;
             m_ports.Add(m_outputPort);
             outputContainer.Add(m_outputPort);
         }

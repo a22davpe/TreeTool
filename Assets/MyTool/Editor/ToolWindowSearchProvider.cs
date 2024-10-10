@@ -7,7 +7,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 
-namespace MyTool.Editor
+namespace MyTool
 {
     public class ToolWindowSearchProvider : ScriptableObject, ISearchWindowProvider
     {

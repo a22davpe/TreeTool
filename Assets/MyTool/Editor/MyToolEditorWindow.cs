@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace MyTool.Editor
+namespace MyTool
 {
     public class MyToolEditorWindow : EditorWindow
     {

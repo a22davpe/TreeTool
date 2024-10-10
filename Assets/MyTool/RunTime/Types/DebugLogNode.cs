@@ -10,13 +10,13 @@ namespace MyTool
         [ExposedProperty(), TextArea]
         public string logMessage;
 
-        public override void OnEnableNode(ToolAsset currentTool, ToolObject toolObject)
+        public override void OnEnterNode(ToolAsset currentTool, ToolObject toolObject)
         {
-            base.OnEnableNode(currentTool, toolObject);
+            base.OnEnterNode(currentTool, toolObject);
 
             Debug.Log(logMessage);
 
-            OnProcess(currentTool, toolObject);
+            ExitNode(currentTool, toolObject);
         }
     }
 }

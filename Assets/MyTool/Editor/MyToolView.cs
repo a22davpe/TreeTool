@@ -8,7 +8,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace MyTool.Editor
+namespace MyTool
 {
     public class MyToolView : GraphView
     {
@@ -146,6 +146,7 @@ namespace MyTool.Editor
 
         private void AddNodeToTree(ToolNode node)
         {
+            Debug.Log(node);
             node.typeName = node.GetType().AssemblyQualifiedName;
 
             ToolEditorNode editorNode = new ToolEditorNode(node, m_serializedObject);
